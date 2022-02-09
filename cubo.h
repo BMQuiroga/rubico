@@ -1,3 +1,6 @@
+#include <iostream>
+#include "cara.h"
+
 class Cubo{
     private:
         Cara *roja;
@@ -20,25 +23,4 @@ class Cubo{
         void EL_HACEDOR_DE_MOVIMIENTOS(Cara* salida, Cara* llegada, int p1s, int p2s, int p3s, int p1l, int p2l, int p3l);
         void intercambiar(char c1, char c2);
         void imprimir();
-
-
-
 };
-
-class Cara{
-    private:
-        char color_cara;
-        char * color;
-    public:
-        Cara(char color);
-        void cambiar_color(int pos, char color);
-        void rotar();
-        char devolver_color(int pos);
-        bool resuelto();
-        char* devolver_array();
-        void prnt(int pos);
-
-
-
-};
-

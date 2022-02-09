@@ -1,5 +1,7 @@
 #include <iostream>
-#include "main.h"
+#include "cubo.h"
+
+class Cara;
 
 using namespace std;
 
@@ -8,8 +10,6 @@ int main(){
     //while(!cubo.resuelto())
     while (1)  
         cubo.menu_mover();
-
-
     return 0;
 }
 
@@ -39,15 +39,21 @@ void Cara::rotar(){
     this->color=aux->devolver_array();
 }
 
-Cara::Cara(char color){
-    this->color_cara=color;
-    char array[8];
-    this->color=array;
+void Cara::cambiar_color(int pos, char nuevo_color){
+    this->color[pos]=nuevo_color;
+}
+
+Cara::Cara(char centro){
+    this->color_cara=centro;
+    char *array = new char[8];
+    this->color = array;
     for (int i=0; i<8; i++)
-        this->color[i]=color;
+        this->color[i]=centro;
+    
 }
 
 Cubo::Cubo(){
+    /*
     Cara amarilla('y');
     this->amarilla=&amarilla;
     Cara roja('r');
@@ -60,6 +66,14 @@ Cubo::Cubo(){
     this->azul=&azul;
     Cara verde('g');
     this->verde=&verde;
+    */
+   this->amarilla = new Cara('y');
+   this->verde = new Cara('g');
+   this->roja = new Cara('r');
+   this->naranja = new Cara('o');
+   this->azul = new Cara('b');
+   this->blanca = new Cara('w');
+
 }
 
 char* Cara::devolver_array(){
@@ -75,6 +89,7 @@ bool Cara::resuelto(){
 }
 
 void Cubo::menu_mover(){
+    imprimir();
     int vueltas=1;
     cout << "inserte el caracter del color de la cara" <<endl;
     char cara;
@@ -127,6 +142,36 @@ void Cubo::movimiento_roja(){
     EL_HACEDOR_DE_MOVIMIENTOS(verde,amarilla,2,3,4,2,3,4);
 }
 
+void Cubo::movimiento_amarilla(){
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,roja,6,5,4,6,5,4);
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,azul,6,5,4,6,5,4);
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,naranja,6,5,4,6,5,4);//por ahi es 4,5,6
+}
+
+void Cubo::movimiento_verde(){
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,blanca,6,5,4,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,azul,6,5,4,2,3,4);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,amarilla,6,5,4,4,3,2);
+}
+
+void Cubo::movimiento_azul(){
+    EL_HACEDOR_DE_MOVIMIENTOS(roja,blanca,4,3,2,2,1,0);
+    EL_HACEDOR_DE_MOVIMIENTOS(roja,naranja,4,3,2,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(roja,amarilla,4,3,2,6,5,4);
+}
+
+void Cubo::movimiento_blanca(){
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,roja,0,1,2,0,1,2);
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,azul,0,1,2,0,1,2);
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,naranja,0,1,2,0,1,2);
+}
+
+void Cubo::movimiento_naranja(){
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,amarilla,0,7,6,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,blanca,0,7,6,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,azul,0,7,6,4,3,2);
+}
+
 void Cubo::EL_HACEDOR_DE_MOVIMIENTOS(Cara* salida, Cara* llegada, int p1s, int p2s, int p3s, int p1l, int p2l, int p3l){
     char* array_salida = salida->devolver_array();
     char* array_llegada = llegada->devolver_array();
@@ -161,22 +206,22 @@ void Cubo::imprimir(){
 
 }
 
-void Cara::prnt(int pos){//FALTA
+void Cara::prnt(int pos){
     char a;
     if (pos==8)
         a = this->color_cara;
     else
         a = color[pos];
     if(a=='b')
-        cout <<" ";
+        cout <<"\033[34;40mB\033[37;40m";
     if(a=='r')
-        cout <<" ";
+        cout <<"\033[31;40mR\033[37;40m";
     if(a=='o')
-        cout <<" ";
+        cout <<"\033[38;5;202mO\033[37;40m";
     if(a=='y')
-        cout <<" ";
+        cout <<"\033[38;5;11mY\033[37;40m";
     if(a=='w')
-        cout <<" ";
+        cout <<"\033[37;40mW\033[37;40m";
     if(a=='g')
-        cout <<" ";
+        cout <<"\033[32;40mG\033[37;40m";
 }

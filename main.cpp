@@ -147,9 +147,9 @@ void Cubo::movimiento_amarilla(){
 }
 
 void Cubo::movimiento_verde(){
-    EL_HACEDOR_DE_MOVIMIENTOS(blanca,blanca,6,5,4,0,7,6);
-    EL_HACEDOR_DE_MOVIMIENTOS(blanca,azul,6,5,4,2,3,4);
-    EL_HACEDOR_DE_MOVIMIENTOS(blanca,amarilla,6,5,4,4,3,2);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,roja,6,5,4,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,amarilla,6,5,4,2,1,0);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,naranja,6,5,4,4,3,2);
 }
 
 void Cubo::movimiento_azul(){
@@ -165,9 +165,9 @@ void Cubo::movimiento_blanca(){
 }
 
 void Cubo::movimiento_naranja(){
-    EL_HACEDOR_DE_MOVIMIENTOS(verde,amarilla,0,7,6,0,7,6);
-    EL_HACEDOR_DE_MOVIMIENTOS(verde,blanca,0,7,6,0,7,6);
-    EL_HACEDOR_DE_MOVIMIENTOS(verde,azul,0,7,6,4,3,2);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,verde,0,7,6,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,amarilla,0,7,6,0,7,6);
+    EL_HACEDOR_DE_MOVIMIENTOS(blanca,azul,0,7,6,4,3,2);
 }
 
 void Cubo::EL_HACEDOR_DE_MOVIMIENTOS(Cara* salida, Cara* llegada, int p1s, int p2s, int p3s, int p1l, int p2l, int p3l){

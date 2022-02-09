@@ -27,19 +27,21 @@ char Cara::devolver_color(int pos){
 }
 
 void Cara::rotar(){
-    Cara * aux;
-    for (int i=0; i<8 ;i++){
-        if(i>6)
-            aux->cambiar_color(i+2,this->color[i]);
-        if(i==7)
-            aux->cambiar_color(1,this->color[7]);
-        if(i==6)
-            aux->cambiar_color(0,this->color[6]);
-    }
-    this->color=aux->devolver_array();
+    char aux7 = this->color[7];
+    char aux6 = this->color[6];
+    cambiar_color(7,this->color[5]);
+    cambiar_color(6,this->color[4]);
+    cambiar_color(5,this->color[3]);
+    cambiar_color(4,this->color[2]);
+    cambiar_color(3,this->color[1]);
+    cambiar_color(2,this->color[0]);
+    cambiar_color(1,aux7);
+    cambiar_color(0,aux6);
+    
 }
 
 void Cara::cambiar_color(int pos, char nuevo_color){
+    if(pos)
     this->color[pos]=nuevo_color;
 }
 
@@ -52,21 +54,17 @@ Cara::Cara(char centro){
     
 }
 
+//Cara::~Cara(){
+//    delete this->color;
+//}
+
+Cara::Cara(char centro, bool nuevo){
+    this->color_cara=centro;
+    char *array = new char[8];
+    this->color = array;
+}
+
 Cubo::Cubo(){
-    /*
-    Cara amarilla('y');
-    this->amarilla=&amarilla;
-    Cara roja('r');
-    this->roja=&roja;
-    Cara naranja('o');
-    this->naranja=&naranja;
-    Cara blanca('w');
-    this->blanca=&blanca;
-    Cara azul('b');
-    this->azul=&azul;
-    Cara verde('g');
-    this->verde=&verde;
-    */
    this->amarilla = new Cara('y');
    this->verde = new Cara('g');
    this->roja = new Cara('r');
@@ -145,7 +143,7 @@ void Cubo::movimiento_roja(){
 void Cubo::movimiento_amarilla(){
     EL_HACEDOR_DE_MOVIMIENTOS(verde,roja,6,5,4,6,5,4);
     EL_HACEDOR_DE_MOVIMIENTOS(verde,azul,6,5,4,6,5,4);
-    EL_HACEDOR_DE_MOVIMIENTOS(verde,naranja,6,5,4,6,5,4);//por ahi es 4,5,6
+    EL_HACEDOR_DE_MOVIMIENTOS(verde,naranja,6,5,4,6,5,4);
 }
 
 void Cubo::movimiento_verde(){

@@ -6,6 +6,8 @@ class Cara{
         char * color;
     public:
         Cara(char color);
+        Cara(char color, bool nuevo);
+        //~Cara();
         void cambiar_color(int pos, char nuevo_color);
         void rotar();
         char devolver_color(int pos);

@@ -41,7 +41,7 @@ void Cara::rotar(){
 }
 
 void Cara::cambiar_color(int pos, char nuevo_color){
-    if(pos)
+    //if(pos<8)
     this->color[pos]=nuevo_color;
 }
 
@@ -57,12 +57,12 @@ Cara::Cara(char centro){
 //Cara::~Cara(){
 //    delete this->color;
 //}
-
+/*
 Cara::Cara(char centro, bool nuevo){
     this->color_cara=centro;
     char *array = new char[8];
     this->color = array;
-}
+}*/
 
 Cubo::Cubo(){
    this->amarilla = new Cara('y');
@@ -128,7 +128,7 @@ void Cubo::mover(char cara){
     }
 }
 
-void Cubo::intercambiar(char c1, char c2){
+void Cubo::intercambiar(char & c1, char & c2){
     int a = c1;
     c1 = c2;
     c2 = a;

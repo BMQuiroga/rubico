@@ -21,6 +21,6 @@ class Cubo{
         void movimiento_naranja();
         void movimiento_blanca();
         void EL_HACEDOR_DE_MOVIMIENTOS(Cara* salida, Cara* llegada, int p1s, int p2s, int p3s, int p1l, int p2l, int p3l);
-        void intercambiar(char c1, char c2);
+        void intercambiar(char & c1, char & c2);
         void imprimir();
 };

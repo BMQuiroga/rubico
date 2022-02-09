@@ -136,18 +136,47 @@ void Cubo::EL_HACEDOR_DE_MOVIMIENTOS(Cara* salida, Cara* llegada, int p1s, int p
 }
 
 void Cubo::imprimir(){
-    cout << blanca->prnt(0) << blanca->prnt(1) << blanca->prnt(2) << endl;
-    cout << "    " << blanca->prnt(7) << 'w' << blanca->prnt(3) << endl;
-    cout << "    " << blanca->prnt(6) << blanca->prnt(5) << blanca->prnt(4) << endl;
+    cout << "    " ; blanca->prnt(0); blanca->prnt(1); blanca->prnt(2); cout<<endl;
+    cout << "    " ; blanca->prnt(7); blanca->prnt(8); blanca->prnt(3); cout<<endl;
+    cout << "    " ; blanca->prnt(6); blanca->prnt(5); blanca->prnt(4); cout<<endl;
 
+    naranja->prnt(0); naranja->prnt(1); naranja->prnt(2); cout << " ";
+    verde->prnt(0); verde->prnt(1); verde->prnt(2); cout << " ";
+    roja->prnt(0); roja->prnt(1); roja->prnt(2); cout << " ";
+    azul->prnt(0); azul->prnt(1); azul->prnt(2); cout<<endl;
 
+    naranja->prnt(7); naranja->prnt(8); naranja->prnt(3); cout << " ";
+    verde->prnt(7); verde->prnt(8); verde->prnt(3); cout << " ";
+    roja->prnt(7); roja->prnt(8); roja->prnt(3); cout << " ";
+    azul->prnt(7); azul->prnt(8); azul->prnt(3); cout<<endl;
 
+    naranja->prnt(6); naranja->prnt(5); naranja->prnt(4); cout << " ";
+    verde->prnt(6); verde->prnt(5); verde->prnt(4); cout << " ";
+    roja->prnt(6); roja->prnt(5); roja->prnt(4); cout << " ";
+    azul->prnt(6); azul->prnt(5); azul->prnt(4); cout<<endl;
 
+    cout << "    " ; amarilla->prnt(0); amarilla->prnt(1); amarilla->prnt(2); cout<<endl;
+    cout << "    " ; amarilla->prnt(7); amarilla->prnt(8); amarilla->prnt(3); cout<<endl;
+    cout << "    " ; amarilla->prnt(6); amarilla->prnt(5); amarilla->prnt(4); cout<<endl;
 
+}
 
-
-
-
-
-
+void Cara::prnt(int pos){//FALTA
+    char a;
+    if (pos==8)
+        a = this->color_cara;
+    else
+        a = color[pos];
+    if(a=='b')
+        cout <<" ";
+    if(a=='r')
+        cout <<" ";
+    if(a=='o')
+        cout <<" ";
+    if(a=='y')
+        cout <<" ";
+    if(a=='w')
+        cout <<" ";
+    if(a=='g')
+        cout <<" ";
 }
